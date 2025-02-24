@@ -6,7 +6,13 @@ const axios = require("axios"); // Import axios for API calls
 const CheckoutOrder = require("./models/CheckoutOrder");
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://rolla-frontend.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 //
@@ -123,7 +129,7 @@ app.get("/api/checkout", async (req, res) => {
 // This is your test secret API key.
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-const YOUR_DOMAIN = "http://localhost:3000";
+const YOUR_DOMAIN = "https://rolla-frontend.vercel.app";
 app.post("/api/create-checkout-session", async (req, res) => {
   try {
     const { cartItems } = req.body;
