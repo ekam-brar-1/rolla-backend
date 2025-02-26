@@ -10,7 +10,7 @@ app.use(
   cors({
     origin: [
       "https://rolla-frontend.vercel.app",
-      "https://rolla-frontend-ekamjot-singhs-projects-bffb6a9b.vercel.app/",
+      "https://rolla-frontend-ekamjot-singhs-projects-bffb6a9b.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
