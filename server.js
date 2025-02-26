@@ -8,7 +8,10 @@ const CheckoutOrder = require("./models/CheckoutOrder");
 const app = express();
 app.use(
   cors({
-    origin: ["https://rolla-frontend.vercel.app"],
+    origin: [
+      "https://rolla-frontend.vercel.app",
+      "https://rolla-frontend-ekamjot-singhs-projects-bffb6a9b.vercel.app/",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -140,7 +143,9 @@ app.get("/api/checkout", async (req, res) => {
 // This is your test secret API key.
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-const YOUR_DOMAIN = "https://rolla-frontend.vercel.app";
+const YOUR_DOMAIN =
+  "https://rolla-frontend.vercel.app" ||
+  "https://rolla-frontend-ekamjot-singhs-projects-bffb6a9b.vercel.app";
 app.post("/api/create-checkout-session", async (req, res) => {
   try {
     const { cartItems } = req.body;
